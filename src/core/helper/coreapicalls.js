@@ -34,14 +34,29 @@ export const loadProducts = () => {
 	}
 };
 
-export const removeProductFromcart = (item, next) => {
+export const removeProductFromcart = (itemId, next) => {
 	let cart = [];
 	if (typeof window !== "undefined") {
 		if (localStorage.getItem("cart")) {
 			cart = JSON.parse(localStorage.getItem("cart"));
+			cart.map((product, index) => {
+				if (product._id === itemId) {
+					cart.splice(index, 1);
+				}
+				return cart;
+			});
+			localStorage.setItem("cart", JSON.stringify(cart));
 		}
-		cart.filter((product) => product._id !== item._id);
-		localStorage.setItem("cart", JSON.stringify(cart));
+
 		next();
+	}
+};
+
+export const emptyCart = (next) => {
+	if (typeof window !== undefined) {
+		if (localStorage.getItem("cart")) {
+			localStorage.removeItem("cart");
+			next();
+		}
 	}
 };

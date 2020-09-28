@@ -14,6 +14,7 @@ const Home = () => {
 				return toast.error(data.error);
 			}
 			setProducts(data);
+			console.log(data);
 		});
 	};
 
@@ -24,9 +25,11 @@ const Home = () => {
 		<Base title='Home' description='Wecome To the Tshirt Store'>
 			<div className='row'>
 				{products.map((product) => (
-					<div className='col-md-4 m-2'>
-						<ProductCard key={product._id} product={product} />
-					</div>
+					<ProductCard
+						key={product._id}
+						product={product}
+						addtoCartButton='true'
+					/>
 				))}
 			</div>
 		</Base>
