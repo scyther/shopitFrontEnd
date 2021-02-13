@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ImageHelper from "./ImageHelper";
 import { addProductTocart, removeProductFromcart } from "./helper/coreapicalls";
 import { Redirect } from "react-router-dom";
-import { Input } from "reactstrap";
+// import { Input } from "reactstrap";
 
 const ProductCard = ({
 	product,
@@ -14,7 +14,7 @@ const ProductCard = ({
 	reload = undefined,
 }) => {
 	const [redirect, setRedirect] = useState(false);
-	const [count, setCount] = useState(product.count);
+	// const [count, setCount] = useState(product.count);
 
 	const cartTitle = product ? product.name : "A photo from pexels";
 	const cartDescrption = product ? product.description : "Default description";
@@ -44,18 +44,18 @@ const ProductCard = ({
 		}
 	};
 
-	const showCount = () => {
-		return (
-			count && (
-				<Input
-					type='number'
-					value={count}
-					onChange={(e) => {
-						setCount(e.target.value);
-					}}></Input>
-			)
-		);
-	};
+	// const showCount = () => {
+	// 	return (
+	// 		count && (
+	// 			<Input
+	// 				type='number'
+	// 				value={count}
+	// 				onChange={(e) => {
+	// 					setCount(e.target.value);
+	// 				}}></Input>
+	// 		)
+	// 	);
+	// };
 
 	const showRemoveFromCart = (removeFromCart) => {
 		return (
