@@ -33,7 +33,7 @@ const Cart = () => {
 					{products ? (
 						productList()
 					) : (
-						<h3 className='text-center border border-success rounded-pill'>
+						<h3 className='text-center border border-success rounded-pill '>
 							No Products Added
 						</h3>
 					)}

@@ -7,8 +7,8 @@ import { toast } from "react-toastify";
 
 const Signin = () => {
 	const [values, setValues] = useState({
-		email: "tester@shopit.com",
-		password: "password",
+		email: "",
+		password: "",
 
 		loading: false,
 		didRedirect: false,
