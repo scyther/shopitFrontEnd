@@ -7,6 +7,7 @@ import ProductCard from "./ProductCard";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
+  const [loading, setloading] = useState(true);
 
   const preload = () => {
     getProducts()
@@ -16,6 +17,7 @@ const Home = () => {
         }
         setProducts(data);
         console.log(data);
+        setloading(false);
       })
       .catch((error) => console.log(error));
   };
@@ -26,13 +28,17 @@ const Home = () => {
   return (
     <Base title="Home" description="Wecome To the Tshirt Store">
       <div className="row">
-        {products.map((product) => (
-          <ProductCard
-            key={product._id}
-            product={product}
-            addtoCartButton="true"
-          />
-        ))}
+        {loading ? (
+          <h1>Loading...</h1>
+        ) : (
+          products.map((product) => (
+            <ProductCard
+              key={product._id}
+              product={product}
+              addtoCartButton="true"
+            />
+          ))
+        )}
       </div>
     </Base>
   );
