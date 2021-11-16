@@ -1,5 +1,6 @@
 import Base from "./Base";
 import React, { useState, useEffect } from "react";
+import { Spinner } from "reactstrap";
 
 import { getProducts } from "./helper/coreapicalls";
 import { toast } from "react-toastify";
@@ -29,7 +30,9 @@ const Home = () => {
     <Base title="Home" description="Wecome To the Tshirt Store">
       <div className="row">
         {loading ? (
-          <h1>Loading...</h1>
+          <Spinner color="primary" size="">
+            Loading...
+          </Spinner>
         ) : (
           products.map((product) => (
             <ProductCard
