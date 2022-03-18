@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Base from "../core/Base";
-import { Link } from "react-router-dom";
 import AddCategory from "../admin/AddCategory";
 import DefaultPage from "../admin/DefaultPage";
 import AddProduct from "../admin/AddProduct";
