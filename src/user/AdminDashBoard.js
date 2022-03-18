@@ -5,6 +5,7 @@ import AddCategory from "../admin/AddCategory";
 import DefaultPage from "../admin/DefaultPage";
 import AddProduct from "../admin/AddProduct";
 import ManageProducts from "../admin/ManageProducts";
+import ManageOrders from "../admin/ManageOrders";
 
 const AdminDashBoard = () => {
 	const [rightPage, setRightPage] = useState(<DefaultPage />);
@@ -52,9 +53,14 @@ const AdminDashBoard = () => {
 					</span>
 				</li>
 				<li className='list-group-item'>
-					<Link className='nav-link text-success' to='/admin/orders'>
+				<span
+						className='nav-link text-success'
+						style={{ cursor: "pointer" }}
+						onClick={() => {
+							setRightPage(<ManageOrders />);
+						}}>
 						Manage Orders
-					</Link>
+					</span>
 				</li>
 			</ul>
 		</div>
