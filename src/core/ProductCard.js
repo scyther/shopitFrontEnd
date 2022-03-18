@@ -30,7 +30,6 @@ const ProductCard = ({
 	};
 
 	const showAddToCart = (addedtoCart) => {
-		console.log(addedtoCart);
 		if (!addedtoCart) {
 			return (
 				<button

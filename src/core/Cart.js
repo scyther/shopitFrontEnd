@@ -39,7 +39,7 @@ const Cart = () => {
 					)}
 				</div>
 				<div className='col-6'>
-					<Checkout products={products} />
+					{products && <Checkout products={products} setReload={setReload} />}
 				</div>
 			</div>
 		</Base>
