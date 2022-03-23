@@ -27,10 +27,10 @@ const Home = () => {
     preload();
   }, []);
   return (
-    <Base title="Home" description="Wecome To the Tshirt Store">
-      <div className="row">
+    <Base title="Home" description="Welcome to our Online Store">
+      <div className="row" style={{minHeight: '200px'}}>
         {loading ? (
-          <Spinner color="primary" size="">
+          <Spinner color="primary" style={{margin: 'auto'}}>
             Loading...
           </Spinner>
         ) : (
