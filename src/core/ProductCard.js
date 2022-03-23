@@ -79,7 +79,7 @@ const ProductCard = ({
 				<p className='lead bg-success font-weight-normal text-wrap'>
 					{cartDescrption}
 				</p>
-				<p className='btn btn-success rounded  btn-sm px-4'>$ {cartPrice}</p>
+				<p className='btn btn-success rounded  btn-sm px-4'>Rs. {cartPrice}</p>
 				<div className='row'>
 					<div className='col-12'>{showAddToCart(addedtoCart)}</div>
 					{/* <div className='col-12'>{showCount()}</div> */}

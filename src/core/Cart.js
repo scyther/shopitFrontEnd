@@ -28,7 +28,7 @@ const Cart = () => {
 
 	return (
 		<Base title='Cart' description='Proceed to Checkout'>
-			<div className='row'>
+			<div className='row' style={{minHeight: '200px'}}>
 				<div className='col-6'>
 					{products ? (
 						productList()
