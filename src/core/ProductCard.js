@@ -6,7 +6,7 @@ import { Redirect } from "react-router-dom";
 
 const ProductCard = ({
 	product,
-	addedtoCart,
+	addtoCart = true,
 	className = " card text-white bg-dark border border-secondary col-md-3 m-2",
 	removeFromCart = false,
 	setReload = (f) => f,
@@ -29,18 +29,17 @@ const ProductCard = ({
 		}
 	};
 
-	const showAddToCart = (addedtoCart) => {
-		if (!addedtoCart) {
-			return (
-				<button
-					onClick={addToCart}
-					className='btn btn-block btn-outline-success mt-2 mb-2'>
-					Add to Cart
-				</button>
-			);
-		} else {
-			return "";
-		}
+	const showAddToCart = (addtoCart) => {
+		return (
+			addtoCart && (
+			  <button
+				onClick={addToCart}
+				className="btn btn-block btn-outline-success mt-2 mb-2"
+			  >
+				Add to Cart
+			  </button>
+			)
+		  );
 	};
 
 	// const showCount = () => {
@@ -81,7 +80,7 @@ const ProductCard = ({
 				</p>
 				<p className='btn btn-success rounded  btn-sm px-4'>Rs. {cartPrice}</p>
 				<div className='row'>
-					<div className='col-12'>{showAddToCart(addedtoCart)}</div>
+					<div className='col-12'>{showAddToCart(addtoCart)}</div>
 					{/* <div className='col-12'>{showCount()}</div> */}
 					<div className='col-12'>{showRemoveFromCart(removeFromCart)}</div>
 				</div>

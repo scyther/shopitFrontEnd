@@ -8,8 +8,10 @@ const Order = ({ order }) => {
   return (
     <ListGroupItem>
       <div className="row">
-        <span className="col-md-4">{order.name}</span>
-        <span className="col-md-5">{order.description}</span>
+        <span className="col-md-4">{order.user.name}</span>
+        <span className="col-md-5">{order.status}</span>
+        <span className="col-md-5">{order.amount}</span>
+        {/* <span className="col-md-5">{order.products}</span> */}
 
         {/* <Button
 					id={order._id}
