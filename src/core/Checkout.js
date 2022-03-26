@@ -3,6 +3,7 @@ import { Button } from "reactstrap";
 import { isAuthenticated } from "../auth/helper";
 import { emptyCart } from "./helper/coreapicalls";
 import { createOrder } from "./helper/orderhelper";
+import { Link } from "react-router-dom";
 // import StripeCheckout from "./payments/StripeCheckout";
 // import { loadStripe } from "@stripe/stripe-js";
 // import { Elements } from "@stripe/react-stripe-js";
@@ -37,7 +38,12 @@ const Checkout = ({ products,setReload,reload = undefined }) => {
           ? `Your Total Amount is Rs. ${calculateAmount()}`
           : "Add Something into the Cart "}{" "}
       </h2>
-      <Button onClick={handleCOD}>Pay COD</Button>
+      {!user ? <>Please Login First{<Link
+                  className="nav-link"
+                  to="/signin"
+                >
+                  Sign In
+                </Link>}</> : <Button onClick={handleCOD}>Pay COD</Button> }
       {/* <Elements stripe={stripePromise}>
 				<StripeCheckout />
 			</Elements> */}
