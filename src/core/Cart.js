@@ -1,15 +1,17 @@
 import React, { useEffect } from "react";
 import Base from "./Base";
 import { useState } from "react";
-import { loadProducts } from "./helper/coreapicalls";
+import { loadProducts, loadWishListProducts } from "./helper/coreapicalls";
 import ProductCard from "./ProductCard";
 import Checkout from "./Checkout";
 
 const Cart = () => {
   const [products, setProducts] = useState([]);
   const [reload, setReload] = useState(false);
+  const [wishListProducts, setWishListProducts] = useState([])
 
   useEffect(() => {
+    setWishListProducts(loadWishListProducts().map(item => item._id))
     setProducts(loadProducts());
   }, [reload]);
 
@@ -23,6 +25,7 @@ const Cart = () => {
         removeFromCart={true}
         setReload={setReload}
         reload={reload}
+        addToWishlist= {wishListProducts.find((item) => item === product._id) ? true : false}
       />
     ));
 
@@ -33,7 +36,7 @@ const Cart = () => {
           {products ? (
             productList()
           ) : (
-            <h3 className="text-center border border-success rounded-pill ">
+            <h3 className="text-center border border-success rounded-pill "  style={{ padding: "20px", background: "#28A745" }}>
               No Products Added
             </h3>
           )}

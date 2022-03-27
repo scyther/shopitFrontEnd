@@ -26,6 +26,21 @@ export const addProductTocart = (item, next) => {
 	}
 };
 
+export const addProductToWishList = (item, next) => {
+	let wishList = [];
+	let tempwishList = []
+	if (typeof window !== "undefined") {
+		if (localStorage.getItem("wishList")) {
+			tempwishList = JSON.parse(localStorage.getItem("wishList"));
+		}
+		tempwishList.push({...item});
+		wishList = Array.from(new Set(tempwishList))
+		localStorage.setItem("wishList", JSON.stringify(wishList));
+		next();
+	}
+};
+
+
 export const loadProducts = () => {
 	if (typeof window !== "undefined") {
 		if (localStorage.getItem("cart")) {
@@ -34,6 +49,13 @@ export const loadProducts = () => {
 	}
 };
 
+export const loadWishListProducts = () => {
+	if (typeof window !== "undefined") {
+		if (localStorage.getItem("wishList")) {
+			return JSON.parse(localStorage.getItem("wishList"));
+		}
+	}
+};
 export const removeProductFromcart = (itemId, next) => {
 	let cart = [];
 	if (typeof window !== "undefined") {
@@ -52,6 +74,23 @@ export const removeProductFromcart = (itemId, next) => {
 	}
 };
 
+export const removeProductFromWishList = (itemId, next) => {
+	let wishList = [];
+	if (typeof window !== "undefined") {
+		if (localStorage.getItem("wishList")) {
+			wishList = JSON.parse(localStorage.getItem("wishList"));
+			wishList.map((product, index) => {
+				if (product._id === itemId) {
+					wishList.splice(index, 1);
+				}
+				return wishList;
+			});
+			localStorage.setItem("wishList", JSON.stringify(wishList));
+		}
+
+		next();
+	}
+};
 export const emptyCart = (next) => {
 	if (typeof window !== undefined) {
 		if (localStorage.getItem("cart")) {

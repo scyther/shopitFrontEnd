@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 // import { loadStripe } from "@stripe/stripe-js";
 // import { Elements } from "@stripe/react-stripe-js";
 
-const Checkout = ({ products,setReload,reload = undefined }) => {
+const Checkout = ({ products, setReload, reload = undefined }) => {
   const { user, token } = isAuthenticated();
   // const stripePromise = loadStripe("pk_test_6pRNASCoBOKtIshFeQd4XMUh");
   const calculateAmount = () => {
@@ -28,7 +28,7 @@ const Checkout = ({ products,setReload,reload = undefined }) => {
     emptyCart(() => {
       console.log("Did we got a crash?");
     });
-	setReload(!reload)
+    setReload(!reload);
   };
   return (
     <div>
@@ -38,12 +38,19 @@ const Checkout = ({ products,setReload,reload = undefined }) => {
           ? `Your Total Amount is Rs. ${calculateAmount()}`
           : "Add Something into the Cart "}{" "}
       </h2>
-      {!user ? <>Please Login First{<Link
-                  className="nav-link"
-                  to="/signin"
-                >
-                  Sign In
-                </Link>}</> : <Button onClick={handleCOD}>Pay COD</Button> }
+      {!user ? (
+        <>
+          Please Login First
+          {
+            <Link className="nav-link" to="/signin">
+              Sign In
+            </Link>
+          }
+        </>
+      ) : (
+        products &&
+        products.length > 0 && <Button onClick={handleCOD}>Pay COD</Button>
+      )}
       {/* <Elements stripe={stripePromise}>
 				<StripeCheckout />
 			</Elements> */}
