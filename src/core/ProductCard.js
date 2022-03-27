@@ -64,11 +64,14 @@ const ProductCard = ({
   // 		)
   // 	);
   // };
-  const showMoveToCart = (moveToCart) => {
+  const showMoveToCart = (moveToCart,product) => {
     return (
       moveToCart && (
         <button
-          onClick={addToCart}
+          onClick={() => {
+            addToCart();
+            removeProductFromWishList(product._id, () => {});
+          }}
           className="btn btn-block btn-outline-warning mt-2 mb-2"
         >
           Move to Cart
@@ -135,7 +138,7 @@ const ProductCard = ({
         <p className="btn btn-success rounded  btn-sm px-4">Rs. {cartPrice}</p>
         <div className="row">
           <div className="col-12">{showAddToCart(addtoCart)}</div>
-          <div className="col-12">{showMoveToCart(moveToCart)}</div>
+          <div className="col-12">{showMoveToCart(moveToCart,product)}</div>
           {/* <div className='col-12'>{showCount()}</div> */}
           <div className="col-12">{showRemoveFromCart(removeFromCart)}</div>
         </div>

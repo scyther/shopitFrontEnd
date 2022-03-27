@@ -34,7 +34,7 @@ const Checkout = ({ products, setReload, reload = undefined }) => {
   const check = (pinCode) => {
     setPinCodeAvailable(checkServicability(pinCode));
     console.log(pinCodeAvailable);
-    setShowToast(true);
+    setShowToast(!showToast);
   };
   const handleCOD = () => {
     const orderData = {
