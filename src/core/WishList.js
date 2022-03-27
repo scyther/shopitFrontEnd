@@ -9,7 +9,7 @@ const WishList = () => {
   const [reload, setReload] = useState(false);
 
   useEffect(() => {
-    setProducts(loadWishListProducts());
+    setProducts(loadWishListProducts() ? loadWishListProducts() : []);
   }, [reload]);
 
   const productList = () =>

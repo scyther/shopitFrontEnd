@@ -11,7 +11,7 @@ const Cart = () => {
   const [wishListProducts, setWishListProducts] = useState([])
 
   useEffect(() => {
-    setWishListProducts(loadWishListProducts().map(item => item._id))
+    setWishListProducts(loadWishListProducts() ? loadWishListProducts().map(item => item._id) : [])
     setProducts(loadProducts());
   }, [reload]);
 
