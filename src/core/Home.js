@@ -12,7 +12,7 @@ const Home = () => {
   const [loading, setloading] = useState(true);
 
   const preload = () => {
-    setWishListProducts(loadWishListProducts().map(item => item._id))
+    setWishListProducts(loadWishListProducts() ? loadWishListProducts().map(item => item._id) : [])
     getProducts()
       .then((data) => {
         if (data.error) {
