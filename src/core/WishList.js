@@ -3,7 +3,6 @@ import Base from "./Base";
 import { useState } from "react";
 import { loadWishListProducts } from "./helper/coreapicalls";
 import ProductCard from "./ProductCard";
-import { Col } from "reactstrap";
 
 const WishList = () => {
   const [products, setProducts] = useState([]);
